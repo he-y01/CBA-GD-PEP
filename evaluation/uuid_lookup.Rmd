@@ -1,0 +1,62 @@
+---
+title: "Confience Notebook: Article & Author Lookup"
+author: "Yannik Heß"
+output: html_document
+---
+
+Convenience notebook for looking up the name of an article and of the volume it is belonging to based on an articles ID or the name and info of an author based on an authors ID.
+
+```{r}
+library(tidyverse)
+```
+
+# Load Data
+```{r}
+article_stats <- read_csv('../analysis/stats/stats_table-X1.csv')
+articles <- read_csv('../data/izpb-corpus_articles.csv')
+authors <- read_csv('../data/izpb-corpus_authors.csv')
+volumes <- read_csv('../data/izpb-corpus_volumes.csv')
+```
+
+```{r}
+authors_distinct <- authors[!duplicated(authors[ , 'uuid']),]
+sprintf('% s authors were removed because of same uuid', nrow(authors) - nrow(authors_distinct))
+```
+
+
+# Join Data
+
+```{r}
+data_combined <- articles %>% 
+  left_join(article_stats, by=c('uuid'='article')) %>% 
+  left_join(volumes %>% select(uuid, title, published), by=c('volume_uuid'='uuid'))
+data_combined
+```
+
+
+# Article Lookup
+
+```{r}
+article_id = '8886898d' # insert (start of) article id
+
+data_combined %>% 
+  filter(startsWith(uuid, article_id)) %>% 
+  mutate(ArticleTitle = title.x, VolumeTitle = title.y) %>% 
+  select(ArticleTitle, VolumeTitle)
+```
+
+
+# Author Lookup
+```{r}
+author_id = '121aeab3-1b8c-3b56-b9e3-2be77619eebf'
+
+authors_distinct %>% 
+  filter(startsWith(uuid, author_id)) %>% 
+  .$author
+
+authors_distinct %>% 
+  filter(startsWith(uuid, author_id)) %>% 
+  .$info
+```
+
+
