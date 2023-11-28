@@ -1,5 +1,6 @@
 #### IMPORTS #################################
 # misc
+import os
 import sys
 import logging
 import logging.config
@@ -10,7 +11,6 @@ import uuid
 import csv
 import json
 import re
-import traceback
 
 # webscraping libraries
 import requests
@@ -71,6 +71,13 @@ LOGGING_CONFIG = {
                      'propagate': False}
     }
 }
+
+if not os.path.isdir(DATA_PATH):
+    os.makedirs(DATA_PATH)
+if not os.path.isdir(DATA_PATH_ARTICLES):
+    os.makedirs(DATA_PATH_ARTICLES)
+if not os.path.isdir(DATA_PATH + 'logs/'):
+    os.makedirs(DATA_PATH + 'logs/')
 
 logging.config.dictConfig(LOGGING_CONFIG)
 log = logging.getLogger(__name__)
