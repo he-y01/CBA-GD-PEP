@@ -1,0 +1,26 @@
+==== prn list statistics =============
+OVERALL
+|  total                     37436
+|  ->  total unique          21955
+
+FEMALE
+|  total                     18327
+|  ->  unique within female  12445
+|  ->  unique across gender  12376
+|  singular                  12941
+|  ->  unique within female   7087
+|  ->  unique across gender   7048
+|  plural                     5386
+|  ->  unique within female   5383
+|  ->  unique across gender   5346
+
+MALE
+|  total                     19109
+|  ->  unique within male     9579
+|  ->  unique across gender   9510
+|  singular                  12706
+|  ->  unique within male     7012
+|  ->  unique across gender   6976
+|  plural                     6403
+|  ->  unique within male     6387
+|  ->  unique across gender   6340
