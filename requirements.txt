@@ -1,0 +1,11 @@
+beautifulsoup4==4.10.0
+coreferee==1.4.1
+coreferee-model-de @ https://github.com/richardpaulhudson/coreferee/raw/master/models/coreferee_model_de.zip
+pandas==1.5.3
+Requests==2.31.0
+selenium==3.141.0
+spacy==3.5.3
+de_core_news_lg @ https://github.com/explosion/spacy-models/releases/download/de_core_news_lg-3.5.0/de_core_news_lg-3.5.0-py3-none-any.whl
+SPARQLWrapper==2.0.0
+wiktionary_de_parser==0.9.5
+
